@@ -1,8 +1,9 @@
-# event-lifecycle-manager
-#🚀 Sobre o Projeto
+#event-lifecycle-manager
+
+🚀 Sobre o Projeto
 API REST para gerenciamento de eventos com ativação e desativação automática. Desenvolvida como solução completa para controle de ciclo de vida de eventos, seguindo boas práticas de desenvolvimento e arquitetura limpa.
 
-#🎯 Funcionalidades
+🎯 Funcionalidades
 
 ✅ CRUD completo de Instituições
 
@@ -24,17 +25,8 @@ API REST para gerenciamento de eventos com ativação e desativação automátic
 
 ✅ DataLoader com dados fictícios para testes
 
-#⏰ SISTEMA DE AGENDAMENTO AUTOMÁTICO
-Como funciona o ciclo de vida do evento?
-java
-@Scheduled(cron = "0 */5 * * * *")  // A CADA 5 MINUTOS
-public void checkExpiredEvents() {
-    // 1. Busca eventos com endDate < hoje E active = true
-    // 2. Marca todos como active = false
-    // 3. Registra log com quantidade desativada
-}
 
-#Regras de negócio implementadas:
+Regras de negócio implementadas:
 
 ✅ Ativação imediata	startDate = hoje	active = true
 
@@ -44,7 +36,7 @@ public void checkExpiredEvents() {
 
 ✅ Validação de período	endDate < startDate	❌ Erro 400
 
-#🛠️ TECNOLOGIAS UTILIZADAS
+🛠️ TECNOLOGIAS UTILIZADAS
 Tecnologia	Versão	Finalidade
 Java	17	Linguagem de programação
 Spring Boot	3.2.4	Framework principal
@@ -55,7 +47,7 @@ Lombok	-	Redução de código boilerplate
 Swagger/OpenAPI	2.5.0	Documentação interativa
 Maven	-	Gerenciamento de dependências
 
-#🚦 COMO EXECUTAR
+🚦 COMO EXECUTAR
 Pré-requisitos
 Java 17+
 
@@ -63,7 +55,7 @@ Maven
 
 Postman (opcional)
 
-#Passos rápidos
+Passos rápidos
 bash
 1. Clone o repositório
 git clone https://github.com/seu-usuario/event-lifecycle-manager.git
@@ -75,8 +67,8 @@ cd event-lifecycle-manager
 mvn spring-boot:run
 A aplicação iniciará em: http://localhost:8080
 
-#📌 ENDEREÇOS IMPORTANTES
-Recurso	URL
+📌 ENDEREÇOS IMPORTANTES
+Base URL http://localhost:8080
 Swagger UI	http://localhost:8080/swagger-ui.html
 H2 Console	http://localhost:8080/h2-console
 
@@ -88,16 +80,20 @@ User: sa
 
 Password: (vazio)
 
-#🧪 DADOS INICIAIS (DATALOADER)
+🧪 DADOS INICIAIS (DATALOADER)
 O sistema já carrega automaticamente 5 instituições e 23 eventos para testes:
 
-#🏛️ Instituições:
-Nome	Tipo
-Cooperativa Central Aurora	
+🏛️ Instituições:
+Cooperativa Central Aurora
+
 Cooperativa de Crédito
+
 Instituto Horizonte	Educação
+
 Fundação Serra Verde	Saúde
+
 Associação Cultural Monte Azul	Cultura
+
 Centro de Inovação Sul	Tecnologia
 
 🎟️ Eventos:
@@ -108,7 +104,8 @@ Centro de Inovação Sul	Tecnologia
 
 ✅ Eventos expirados - Serão desativados pelo scheduler
 
-#📋 EXEMPLOS DE REQUISIÇÕES
+📋 EXEMPLOS DE REQUISIÇÕES
+
 1. CRIAR INSTITUIÇÃO
 bash
 curl -X POST http://localhost:8080/api/institutions/institution \
@@ -155,16 +152,20 @@ bash
 curl -X GET http://localhost:8080/api/v1/events?institutionId=1
 
 
-#⏰ COMPORTAMENTO DO SCHEDULER
-Intervalo	Ação	Log
-A cada 5 minutos	Verifica eventos expirados	
+⏰ COMPORTAMENTO DO SCHEDULER
+
+A cada 2 minutos	
+Verifica eventos expirados	
 
 ⏰ [2026-02-12] Analisando eventos expirados...
 Quando encontra	Desativa automaticamente	
+
 ✅ 3 evento(s) desativado(s) em 2026-02-12
 Quando não encontra	Apenas informa	
+
 📭 Nenhum evento expirado encontrado
 Meia-noite	Verificação extra	
+
 📅 Executando verificação diária
 
 Exemplo de log:
@@ -177,6 +178,7 @@ text
 
 📊 MODELO DE DADOS
 sql
+
 INSTITUTION {
   id: LONG (PK)
   name: STRING (unique)
@@ -195,7 +197,6 @@ EVENT {
   created_at: DATETIME
   updated_at: DATETIME
 }
-
 
 
 👨‍💻 AUTOR
