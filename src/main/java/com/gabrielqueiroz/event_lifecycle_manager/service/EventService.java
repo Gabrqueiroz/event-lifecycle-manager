@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -57,10 +59,8 @@ public class EventService {
         }
     }
 
-    // ✅ MÉTODO DENTRO DA CLASSE!
     private InstitutionModel findInstitutionById(Long id) {
         return institutionRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Instituição não encontrada com ID: " + id));
     }
 }
-

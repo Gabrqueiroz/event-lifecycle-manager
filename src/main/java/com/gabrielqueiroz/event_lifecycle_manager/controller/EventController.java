@@ -13,8 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Deprecated
+@RestController
 @RequestMapping("/api/v1/events")
 @RequiredArgsConstructor
 @Tag(name = "Eventos", description = "API completa para gerenciamento de eventos")
@@ -23,7 +24,7 @@ public class EventController {
     private final EventService eventService;
 
     @Operation(summary = "Cria uma novo evento", description = "Criar evento.")
-    @PostMapping
+    @PostMapping("/event")
     public ResponseEntity<EventResponse> create(@Valid @RequestBody EventRequestDto request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(eventService.create(request));
     }
