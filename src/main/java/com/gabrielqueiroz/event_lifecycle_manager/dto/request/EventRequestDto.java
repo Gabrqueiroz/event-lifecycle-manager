@@ -1,5 +1,7 @@
 package com.gabrielqueiroz.event_lifecycle_manager.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,11 +14,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class EventRequestDto {
-    private Long id;
-    private String name;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private Boolean active;
-    private String institutionName;
+
+        @NotBlank(message = "Nome é obrigatório")
+        private String name;
+
+        @NotNull(message = "Data de início é obrigatória")
+        private LocalDate startDate;
+
+        @NotNull(message = "Data de fim é obrigatória")
+        private LocalDate endDate;
+
+        @NotNull(message = "ID da instituição é obrigatório")
+        private Long institutionId;
 }
 

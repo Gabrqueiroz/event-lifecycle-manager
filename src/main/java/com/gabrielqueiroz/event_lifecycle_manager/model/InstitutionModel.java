@@ -23,6 +23,8 @@ public class InstitutionModel {
     @Column(nullable = false)
     private String type;
 
-    @OneToMany(mappedBy = "institutionModel")  // ✅ AGORA CORRESPONDE AO CAMPO ABAIXO
-    private List<EventModel> events;            // ✅ List<EventModel> (não Event)
+    @OneToMany(mappedBy = "institutionModel")
+
+    private List<EventModel> events;
+
 }
