@@ -1,5 +1,3 @@
-#event-lifecycle-manager
-
 🚀 Sobre o Projeto
 API REST para gerenciamento de eventos com ativação e desativação automática. Desenvolvida como solução completa para controle de ciclo de vida de eventos, seguindo boas práticas de desenvolvimento e arquitetura limpa.
 
@@ -36,19 +34,31 @@ Regras de negócio implementadas:
 
 ✅ Validação de período	endDate < startDate	❌ Erro 400
 
+✅ Instituições após sua criação não podem ser deletadas, apenas eventos (Poderia futuramente adicionar a funcionalidade de um IN_DELETE no registro)
+
 🛠️ TECNOLOGIAS UTILIZADAS
+
 Tecnologia	Versão	Finalidade
+
 Java	17	Linguagem de programação
+
 Spring Boot	3.2.4	Framework principal
+
 Spring Data JPA	-	Persistência e ORM
+
 Spring Validation	-	Validações de dados
+
 H2 Database	-	Banco em memória para testes
+
 Lombok	-	Redução de código boilerplate
+
 Swagger/OpenAPI	2.5.0	Documentação interativa
+
 Maven	-	Gerenciamento de dependências
 
 🚦 COMO EXECUTAR
 Pré-requisitos
+
 Java 17+
 
 Maven
@@ -68,8 +78,11 @@ mvn spring-boot:run
 A aplicação iniciará em: http://localhost:8080
 
 📌 ENDEREÇOS IMPORTANTES
+
 Base URL http://localhost:8080
+
 Swagger UI	http://localhost:8080/swagger-ui.html
+
 H2 Console	http://localhost:8080/h2-console
 
 Configuração H2 Console:
@@ -81,6 +94,7 @@ User: sa
 Password: (vazio)
 
 🧪 DADOS INICIAIS (DATALOADER)
+
 O sistema já carrega automaticamente 5 instituições e 23 eventos para testes:
 
 🏛️ Instituições:
