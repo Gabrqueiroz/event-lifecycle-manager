@@ -1,18 +1,17 @@
 package com.gabrielqueiroz.event_lifecycle_manager.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "sb_event")
+@Table(name = "sb_institution")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Event {
+public class InstitutionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +21,8 @@ public class Event {
     private String name;
 
     @Column(nullable = false)
-    private LocalDate startDate;
+    private String type;
 
-    @Column(nullable = false)
-    private LocalDate endDate;
-
-    @Column(nullable = false)
-    private Boolean active;
-
-    @ManyToOne
-    @JoinColumn(name = "institution_id", nullable = false)
-    private Institution institution;
+    @OneToMany(mappedBy = "institutionModel")  // ✅ AGORA CORRESPONDE AO CAMPO ABAIXO
+    private List<EventModel> events;            // ✅ List<EventModel> (não Event)
 }
