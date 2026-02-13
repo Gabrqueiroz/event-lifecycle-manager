@@ -9,10 +9,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/institutions")
@@ -24,5 +23,17 @@ public class InstitutionController {
     @PostMapping("/institution")
     public ResponseEntity<InstitutionResponse> create(@Valid @RequestBody InstitutionRequestDto request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(institutionService.create(request));
+    }
+
+    @Operation(summary = "Buscar instituição por ID com seus eventos")
+    @GetMapping("/institution/{id}/events")
+    public ResponseEntity<InstitutionResponse> findByIdWithEvents(@PathVariable Long id) {
+        return ResponseEntity.ok(institutionService.findByIdWithEvents(id));
+    }
+
+    @Operation(summary = "Listar todas instituições com seus eventos")
+    @GetMapping("/institutions/events")
+    public ResponseEntity<List<InstitutionResponse>> findAllWithEvents() {
+        return ResponseEntity.ok(institutionService.findAllWithEvents());
     }
 }

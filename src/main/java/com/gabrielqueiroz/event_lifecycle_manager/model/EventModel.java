@@ -3,6 +3,7 @@ package com.gabrielqueiroz.event_lifecycle_manager.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sb_event")
@@ -31,4 +32,6 @@ public class EventModel {
     @ManyToOne
     @JoinColumn(name = "institution_id", nullable = false)
     private InstitutionModel institutionModel;
+
+
 }
